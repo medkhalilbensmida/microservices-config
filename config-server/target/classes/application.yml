@@ -1,0 +1,17 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/medkhalilbensmida/microservices-config.git
+          clone-on-start: true
+          default-label: main
+          search-paths: config-files
+
+# Désactiver la vérification de compatibilité
+spring.cloud.compatibility-verifier.enabled: false
