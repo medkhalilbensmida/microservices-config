@@ -3,7 +3,7 @@ spring:
     name: gateway-service
   cloud:
     config:
-      enabled: false  # Désactive complètement Config Client
+      enabled: false
     gateway:
       routes:
         - id: product-service
@@ -26,3 +26,23 @@ eureka:
 
 server:
   port: 8080
+
+# Configuration Actuator pour Gateway
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics  # Ajouter d'autres endpoints si besoin
+      base-path: /actuator  # Chemin par défaut
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+
+# Info personnalisée
+info:
+  app:
+    name: Gateway Service
+    description: API Gateway for Microservices
+    version: 1.0.0

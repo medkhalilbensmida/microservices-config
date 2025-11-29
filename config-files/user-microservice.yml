@@ -24,14 +24,25 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
+# Configuration Actuator CORRIGÉE
 management:
   endpoints:
     web:
       exposure:
-        include: info,health
+        include: health,info,metrics
+    enabled-by-default: true
   endpoint:
+    health:
+      show-details: always
     info:
       enabled: true
+
+# Info de l'application
+info:
+  app:
+    name: User Service
+    description: User Management Microservice
+    version: 1.0.0
 
 logging:
   level:
